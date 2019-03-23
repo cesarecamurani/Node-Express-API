@@ -108,29 +108,22 @@ class TodosController {
 
   deleteTodo(req, res) {
     const id = parseInt(req.params.id, 10);
-    let todoFound;
-    let itemIndex;
-    db.map((todo, index) => {
-      if (todo.id === id) {
-        todoFound = todo;
-        itemIndex = index;
-      }
-    });
-
-    if (!todoFound) {
-      return res.status(404).send({
-        success: 'false',
-        message: 'todo not found',
+  
+    models.Todo.destroy({ where: { id: id }})
+      .then((todo) => {
+        if (todo) {
+          return res.status(200).send({
+            success: 'true',
+            message: 'todo deleted successfully',
+          });
+        }
+        return res.status(404).send({
+          success: 'false',
+          message: 'todo not found',
+        });
       });
     }
-    db.splice(itemIndex, 1);
-
-    return res.status(200).send({
-      success: 'true',
-      message: 'Todo deleted successfuly',
-    });
   }
-}
 
 const todoController = new TodosController();
 export default todoController;

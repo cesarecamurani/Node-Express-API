@@ -6,10 +6,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-Todo.associate = (models) => {
-  Todo.hasMany(models.TodoItem, {
-    foreignKey: 'todoId',
-  });
-};
+  Todo.associate = (models) => {
+    Todo.hasMany(models.TodoItem, {
+      foreignKey: 'todoId',
+    });
+  };
 return Todo;
 };

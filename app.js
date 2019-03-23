@@ -1,7 +1,6 @@
 import express from 'express';
 import router from './routes/index.js';
 import bodyParser from 'body-parser';
-import db from './db/db';
 
 const app = express();
 const PORT = 5000;

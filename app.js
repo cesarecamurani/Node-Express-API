@@ -11,5 +11,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
 
 app.listen(PORT, () => {
-  console.log('server running on port ${PORT}')
+  console.log("server running on port 5000")
 });
